@@ -1,0 +1,11 @@
+flask==0.10
+flask-cache==0.13.1
+flask-script==2.0.5
+flask-celery-helper==1.1.0
+flask-redis==0.1.0
+flask-mongoengine==0.7.1
+flask-sqlalchemy==2.1
+jinja2==2.7
+flasgger==0.5.12
+good==0.0.7-0
+pyresttest==1.7.1

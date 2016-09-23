@@ -1,0 +1,26 @@
+---
+- config:
+  - testset: TestMain
+  - generators:
+    - 'randname': {type: 'random_text', min_length: 1, max_length: 32}
+
+- test:
+  - generator_binds: {randname: randname}
+  - name: WelcomeBadRequest
+  - group: main
+  - headers: {'Content-Type': 'application/json'}
+  - url: '/'
+  - method: POST
+  - body: {template: '{"nameee": "$randname"}'}
+  - expected_status: [400]
+
+- test:
+  - generator_binds: {randname: randname}
+  - name: Welcome
+  - group: main
+  - headers: {'Content-Type': 'application/json'}
+  - url: '/'
+  - method: POST
+  - body: {template: '{"name": "$randname"}'}
+  - expected_status: [200]
+  - compare: {jsonpath_mini: 'name', comparator: 'ne', expected: {template: $randname}}

@@ -1,0 +1,26 @@
+---
+- config:
+  - testset: TestUser
+  - generators:
+    - 'randuser': {type: 'random_text', min_length: 1, max_length: 32}
+    - 'randpass': {type: 'random_text', min_length: 3, max_length: 32}
+
+- test:
+  - generator_binds: {randuser: randuser, randpass: randpass}
+  - name: Signup
+  - group: api_1.user
+  - headers: {'Content-Type': 'application/json'}
+  - url: '/api/v1/user/'
+  - method: POST
+  - body: {template: '{"username": "$randuser", "password": "$randpass"}'}
+  - expected_status: [201]
+
+- test:
+  - name: GetInfo
+  - group: api_1.user
+  - headers: {template: {'Content-Type': 'application/json'}}
+  - url: '/api/v1/user/'
+  - method: GET
+  - expected_status: [200]
+  - validators:
+    - compare: {jsonpath_mini: 'baby', expected: 'knight'}
