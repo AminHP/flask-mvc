@@ -7,13 +7,13 @@ import os
 
 
 class DefaultConfig(object):
-
     # app
 
     DEFAULT_APP_NAME = 'project'
     DEBUG = True
     TESTING = True
     DEPLOYMENT = False
+    TOKEN_EXPIRE_TIME = 3600
 
     # directory
 
@@ -53,7 +53,6 @@ class DefaultConfig(object):
 
 
 class DevelopmentConfig(DefaultConfig):
-
     # app
 
     TESTING = False

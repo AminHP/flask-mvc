@@ -11,6 +11,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from project.modules.schema_validator import Validator
 from project.modules.api_router import ApiRouter
 from project.modules.api_doc import ApiDoc
+from project.modules.auth import Auth
 
 
 cache = Cache()
@@ -21,3 +22,4 @@ sqldb = SQLAlchemy()
 validator = Validator()
 api_router = ApiRouter()
 api_doc = ApiDoc()
+auth = Auth(redis)
