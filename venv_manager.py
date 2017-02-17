@@ -20,7 +20,7 @@ def remove():
 
 
 def activate():
-    lib_dir = pip_cmd = os.path.join(venv_dir(), 'lib/python2.7/site-packages')
+    lib_dir = os.path.join(venv_dir(), 'lib/python2.7/site-packages')
     sys.path.append(lib_dir)
 
 
