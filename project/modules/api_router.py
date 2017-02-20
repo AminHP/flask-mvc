@@ -23,6 +23,7 @@ class ApiRouter(object):
             endpoint = options.pop('endpoint', None)
             if not endpoint:
                 endpoint = "%s.%s" % ('.'.join(f.__module__.split('.')[2:]), f.__name__)
+            new_rule = new_rule[:-1] if new_rule.endswith('/') else new_rule
             self.app.add_url_rule(new_rule, endpoint, f, **options)
             return f
         return decorator
